@@ -6,10 +6,17 @@
 
 package me.a7med.inventory.frontend.controllers;
 
-import inventory.pl.entities.BuyOrder;
-import inventory.pl.services.BuyOrderService;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
+import inventory.pl.entities.Features;
+import inventory.pl.entities.Product;
+import inventory.pl.helpers.FeatureType;
 import inventory.pl.services.ServiceManager;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,17 +24,72 @@ import javax.inject.Named;
  *
  * @author ahmed_darweeesh
  */
-@RequestScoped
+@SessionScoped
 @Named("productCon")
-public class ProductController {
+public class ProductController implements Serializable{
     @Inject
     ServiceManager manager;
-    public void test(){
-        System.out.println("testing");
-        BuyOrderService buyService = manager.getBuyOrderSrervice();
-        BuyOrder order=new BuyOrder();
-        order.setDescription("fron end test");
-        order.setName("name 1");
-        buyService.save(order);
+    private String productName;
+    private String productDescription;
+    private Product currentProduct;
+    private List<Features>featureses=new ArrayList<>();
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public Product getCurrentProduct() {
+        return currentProduct;
+    }
+
+    public void setCurrentProduct(Product currentProduct) {
+        this.currentProduct = currentProduct;
+    }
+    public List<Product>getAllProducts(){
+        return manager.getProductService().getAll();
+    }
+
+    public List<Features> getFeatureses() {
+        return featureses;
+    }
+
+    public void setFeatureses(List<Features> featureses) {
+        this.featureses = featureses;
+    }
+    public void addFeature(){
+        System.out.println("adding feature");
+        featureses.add(new Features());
+    }
+    public FeatureType[]getFeatureTypes(){
+        return FeatureType.values();
+    }
+    public void saveProduct(){
+        Product p=new Product();
+        p.setDescription(productDescription);
+        p.setName(productName);
+        p.setCreateDate(new Date());
+        manager.getProductService().saveProduct(p);
+        for(int i=0;i<featureses.size();i++){
+            featureses.get(i).setOrder(i);
+            featureses.get(i).setProduct(p);
+        }
+        p.setProductFeatures(featureses);
+        manager.getProductService().saveProduct(p);
+    }
+    public void viewDetails(Product p){
+        System.out.println("going to details for product "+p.getName());
+        currentProduct=p;
     }
 }

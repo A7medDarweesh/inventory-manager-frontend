@@ -7,7 +7,7 @@
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>Inventory-FrontEnd</name>
+    <name>Inventory Manager</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -24,6 +24,11 @@
             <groupId>a7med.apps</groupId>
             <artifactId>inventory.pl</artifactId>
             <version>0.0.2-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>5.1</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
