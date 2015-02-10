@@ -1,12 +1,32 @@
 
 #top {
-    position: relative;
+    position: fixed;
     background-color: #036fab;
     color: white;
     padding: 5px;
     margin: 0px 0px 10px 0px;
+    z-index: 9995;
+    background-color: #2b3643;
+    width: 100%;  
+    padding: 0 20px 0 20px;  
+    margin: 0px;  
+    border: 0px;  padding: 0px;  
+    box-shadow: none;  
+    height: 46px;  
+    min-height: 46px;  filter: none;  
+    background-image: none;
+    top: 0%;
+    left: 0%;
 }
-
+#top .page-logo {
+float: left;
+display: block;
+width: 235px;
+height: 46px;
+padding-left: 5px;
+padding-right: 20px;
+padding-top: 20px;
+}
 #bottom {
     position: relative;
     background-color: #c2dfef;
@@ -16,9 +36,11 @@
 
 #left {
     float: left;
-    background-color: #ece3a5;
+    /* background-color: #364150; */
     padding: 5px;
-    width: 150px;
+    width: 152px;
+    /* margin-top: 0%; */
+    margin-left: -1%;
 }
 
 #right {
@@ -35,10 +57,10 @@
 }
 
 .left_content {
-    background-color: #AFBD8C;
-    padding: 5px;
+    background-color: #dddddd;
+    /* padding: 5px; */
     margin-left: 170px;
-    height: 700px;
+    margin-top: 3.5%;
 }
 
 .right_content {
@@ -48,16 +70,18 @@
 }
 
 #top a:link, #top a:visited {
-  color: white;
+  /* color: white; */
   font-weight : bold;
   text-decoration: none;
 }
 
 #top a:link:hover, #top a:visited:hover  {
-  color: black;
+  /* color: black; */
   font-weight : bold;
   text-decoration : underline;
 }
+
+
 .row{
     width: 28%;
     height: 20%;
@@ -82,4 +106,29 @@
 
 .image_container{
     border-radius: 88px;
+}
+.sr-only{
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0,0,0,0);
+border: 0;
+
+}
+.glyphicon {
+position: relative;
+top: 1px;
+display: inline-block;
+font-family: 'Glyphicons Halflings';
+font-style: normal;
+font-weight: 400;
+line-height: 1;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-user:before {
+content: "*";
 }

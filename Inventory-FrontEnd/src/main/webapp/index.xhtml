@@ -9,7 +9,7 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-         <f:view contracts="index">
+         <f:view contracts="keenTheme">
             <ui:composition template="/template.xhtml">
                 <ui:define name="content" id="mycontent">
           
@@ -41,7 +41,7 @@
                             <p >Manage warehouses and view their contents</p>
                             <p:panelGrid columns="1" layout="grid">
                                 
-                                <p:commandLink value="Manage Warehouse" action="/WEB-INF/pages/warehouses"/>
+                                <p:commandLink value="Manage Warehouse" action="warehouses"/>
                                 <p:commandLink value="Warehouses reports Central" action="WEB-INF/pages/reporting/warehouses"/>
                             </p:panelGrid>
                         </div>
@@ -94,13 +94,6 @@
                 </ui:define>
             </ui:composition>
          </f:view>
-        <script>
-            
-            $(".row_header").click(function (){
-                $(".row_content").hide(500,"easeOutBack");
-                $(this).parent().children(".row_content").show(500,"easeInBack");
-            })
-        </script>
     </h:body>
 </html>
 
