@@ -9,91 +9,11 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-         <f:view contracts="keenTheme">
+        <f:view contracts="keenTheme">
             <ui:composition template="/template.xhtml">
-                <ui:define name="content" id="mycontent">
-          
-        <h:form>
-            <h:commandButton action="products" value="Product List"/>
-          
-        </h:form>
-                    <div class="row" >
-                        <div class="row_header products_header wobble-vertical">Products Management<div class="image_container" >
-                            
-                                <img src="images/products.png" width="175" height="175"/>
-                            </div></div>
-                        <div class="row_content products_content">
-                             <p >Manage Products and products categories</p>
-                            <p:panelGrid columns="1" layout="grid">
-                                <p:commandLink value="Manage Products" action="products?faces-redirect=true"/>
-                               
-                            </p:panelGrid>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row_header wobble-vertical warehouse_header">
-                            Warehouse Management<div class="image_container" >
-                            
-                                <img src="images/warehouse.png" width="175" height="175" />
-                            </div>
-                        </div>
-                        <div class="row_content warehouse_content"> 
-                            <p >Manage warehouses and view their contents</p>
-                            <p:panelGrid columns="1" layout="grid">
-                                
-                                <p:commandLink value="Manage Warehouse" action="warehouses"/>
-                                <p:commandLink value="Warehouses reports Central" action="WEB-INF/pages/reporting/warehouses"/>
-                            </p:panelGrid>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row_header wobble-vertical inventory_in_header">
-                            Inventory-In Management<div class="image_container" >
-                            
-                                <img src="images/import.png" width="175" height="175" />
-                            </div>
-                        </div>
-                        <div class="row_content inventory_in_content">
-                            <p >Manage inventory-in movements and view movements history</p>
-                            <p:panelGrid columns="1" layout="grid">
-                                <p:commandLink value="Manage Movements" action="WEB-INF/pages/inventoryIn"/>
-                                <p:commandLink value="View Movements History" action="WEB-INF/pages/inventoryIn"/>
-                            </p:panelGrid>
-                        </div>
-                    </div>
-                     <div class="row">
-                         <div class="row_header  wobble-vertical inventory_out_header">
-                             Inventory-Out Management<div class="image_container" >
-                            
-                                <img src="images/export.png" width="175" height="175" />
-                            </div>
-                         </div>
-                         <div class="row_content inventory_out_content">
-                              <p >Manage inventory-Out movements and view movements history</p>
-                            <p:panelGrid columns="1" layout="grid">
-                                <p:commandLink value="Manage Movements" action="WEB-INF/pages/inventoryIn"/>
-                                <p:commandLink value="View Movements History" action="WEB-INF/pages/inventoryIn"/>
-                            </p:panelGrid>
-                         </div>
-                    </div>
-                     <div class="row">
-                         <div class="row_header wobble-vertical inventory_orders_header">
-                             Orders Management<div class="image_container" >
-                            
-                                <img src="images/order.png" width="175" height="175"/>
-                            </div>
-                         </div>
-                         <div class="row_content inventory_orders_content">
-                              <p >Manage orders and view orders status</p>
-                            <p:panelGrid columns="1" layout="grid">
-                                <p:commandLink value="Manage Movements" action="WEB-INF/pages/inventoryIn"></p:commandLink>
-                                <p:commandLink value="View Movements History" action="WEB-INF/pages/inventoryIn"/>
-                            </p:panelGrid>
-                         </div>
-                    </div>
-                </ui:define>
+                
             </ui:composition>
-         </f:view>
+        </f:view>
     </h:body>
 </html>
 

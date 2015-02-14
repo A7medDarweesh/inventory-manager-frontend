@@ -4,11 +4,21 @@
  * and open the template in the editor.
  */
 
+
 $(function(){
     $(".row_header").click(function (){
      
                 $(".row_content").hide(500,"easeOutBack");
                 $(this).parent().children(".row_content").show(500,"easeInBack");
+            });
+            $(".dropdown").click(function (){
+              
+                 if($(this).hasClass("open")){
+                     $(this).removeClass("open");
+                }else{
+                     $( ".dropdown").removeClass("open");
+                 $(this).addClass("open");
+           }
             });
             $(".treeview").click(function (){
                 if($(this).hasClass("opened")){
