@@ -640,6 +640,7 @@ Gradient Background colors
   list-style: none;
   margin: 0;
   padding: 0;
+  font-size: 12px;
 }
 .sidebar .sidebar-menu > li {
   margin: 0;
@@ -666,7 +667,7 @@ Gradient Background colors
 .sidebar .sidebar-menu .treeview-menu > li > a {
   padding: 5px 5px 5px 15px;
   display: block;
-  font-size: 14px;
+  font-size: 11px;
   margin: 0px 0px;
 }
 .sidebar .sidebar-menu .treeview-menu > li > a > .fa,
@@ -780,6 +781,7 @@ Gradient Background colors
   padding: 0 0 0 0!important;
   margin: 0!important;
   top: 100%;
+  right: 0px;
   border: 1px solid #dfdfdf;
   -webkit-border-radius: 4px !important;
   -moz-border-radius: 4px !important;
@@ -1014,6 +1016,7 @@ Gradient Background colors
   padding: 15px;
   border-bottom: 1px solid #f4f4f4;
   border-top: 1px solid #dddddd;
+  right: 0px;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-body:before,
 .navbar-nav > .user-menu > .dropdown-menu > li.user-body:after {
@@ -2549,6 +2552,7 @@ Component: timeline
 /* skin-blue navbar */
 .skin-blue .navbar {
   background-color: #3c8dbc;
+  height: 52px;
 }
 .skin-blue .navbar .nav a {
   color: rgba(255, 255, 255, 0.8);
@@ -2563,8 +2567,9 @@ Component: timeline
   color: #f6f6f6;
 }
 .skin-blue .navbar .navbar-right > .nav {
-  margin-right: 10px;
+  margin-right: 75px;
   float: right;
+  height: 52px;
 }
 .skin-blue .navbar .sidebar-toggle .icon-bar {
   background: rgba(255, 255, 255, 0.8);
@@ -2576,6 +2581,8 @@ Component: timeline
 .skin-blue .logo {
   background-color: #367fa9;
   color: #f9f9f9;
+  height: 52px;
+  width: 225px;
 }
 .skin-blue .logo > a {
   color: #f9f9f9;
@@ -2599,6 +2606,7 @@ Component: timeline
 /* skin-blue sidebar */
 .skin-blue .sidebar {
   border-bottom: 1px solid #fff;
+  clear: both;
 }
 .skin-blue .sidebar > .sidebar-menu > li {
   border-top: 1px solid #fff;
@@ -2620,6 +2628,7 @@ Component: timeline
 }
 .skin-blue .sidebar > .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
+  font-size: 11px!important;
   background: #f9f9f9;
 }
 .skin-blue .left-side {
