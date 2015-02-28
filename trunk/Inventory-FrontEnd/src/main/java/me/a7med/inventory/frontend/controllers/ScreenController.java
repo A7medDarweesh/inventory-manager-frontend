@@ -40,7 +40,8 @@ public class ScreenController implements Serializable {
     public void setPage(String page) {
         this.page = page;
     }
-    public void testAction(String source){
+    public String testAction(String source){
         System.out.println("Action recieved from "+source);
+        return null;
     }
 }

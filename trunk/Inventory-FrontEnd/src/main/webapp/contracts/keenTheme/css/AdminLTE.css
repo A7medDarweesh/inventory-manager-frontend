@@ -1270,14 +1270,17 @@ Gradient Background colors
 */
 .small-box {
   position: relative;
+  width: 80%;
   display: block;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
   margin-bottom: 15px;
+  float: left;
 }
 .small-box > .inner {
   padding: 10px;
+  float: left;
 }
 .small-box > .small-box-footer {
   position: relative;
@@ -1315,13 +1318,14 @@ Gradient Background colors
   z-index: 5px;
 }
 .small-box .icon {
-  position: absolute;
+  /* position: absolute; */
   top: auto;
-  bottom: 5px;
-  right: 5px;
+  /* bottom: 5px; */
+  /* right: 5px; */
   z-index: 0;
   font-size: 90px;
   color: rgba(0, 0, 0, 0.15);
+  /* left: 155px; */
 }
 .small-box:hover {
   text-decoration: none;
@@ -1333,7 +1337,7 @@ Gradient Background colors
   animation-iteration-count: 1;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
-  -webkit-animation-name: tansformAnimation;
+  /* -webkit-animation-name: tansformAnimation; */
   -webkit-animation-duration: .5s;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-timing-function: ease;
