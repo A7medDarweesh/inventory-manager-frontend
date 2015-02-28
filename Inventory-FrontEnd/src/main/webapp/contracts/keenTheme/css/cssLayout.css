@@ -23,13 +23,13 @@
     background-color: slategray;
 }
 #top .page-logo {
-float: left;
-display: block;
-width: 235px;
-height: 46px;
-padding-left: 5px;
-padding-right: 20px;
-padding-top: 20px;
+    float: left;
+    display: block;
+    width: 235px;
+    height: 46px;
+    padding-left: 5px;
+    padding-right: 20px;
+    padding-top: 20px;
 }
 #bottom {
     position: relative;
@@ -40,14 +40,14 @@ padding-top: 20px;
 
 #left {
     float: left;
-    /* background-color: #364150; */
+    background-color: #f9f9f9;
     padding: 5px;
     width: 16%;
     margin-top: 2%;
     margin-left: 0%;
     /* clear: both; */
     font-size: 12px;
-    min-height: 2500px;
+    /*    min-height: 2500px;*/
 }
 
 #right {
@@ -66,15 +66,40 @@ padding-top: 20px;
 .left_content {
     background-color: #f9f9f9;
     padding: 5px;
-    /* margin-left: 170px; */
-    margin-top: 3.5%;
+    margin-left: 18%;
+    margin-top: -33.5%;
     clear: both;
-    position: fixed;
-    left: 18.1%;
-    top: -0.1%;
+    /* position: absolute; */
+    /* left: 18.1%; */
+    /* top: -0.1%; */
     width: 82%;
+    overflow: auto;
+    float: left;
 }
-
+#footer{
+    position: fixed;
+    background-color: #c2dfef;
+    padding: 5px;
+    margin: 27px 4px 0px 0px;
+    background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)) repeat scroll 0 0 #C4C4C4;
+    border: 1px solid #A8A8A8;
+    color: #333333;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    bottom: 0px;
+    width: 100%;
+}
+.row_container{
+    margin-bottom: 2%;
+    margin-right: 4%;
+}
+.row_container .ui-panel .ui-widget-header{
+    background: #156CDD;
+    background: #c4c4c4 -moz-linear-gradient(top, rgba(255,255,255,0.8), rgba(255,255,255,0));
+    color: #F7F7F6;
+    font-weight: bold;
+    text-shadow: 0px 1px 0px rgba(11, 3, 3, 0.7);
+}
 .right_content {
     background-color: #dddddd;
     padding: 5px;
@@ -82,37 +107,41 @@ padding-top: 20px;
 }
 
 #top a:link, #top a:visited {
-  color: white;
-  font-weight : bold;
-  text-decoration: none;
+    color: white;
+    font-weight : bold;
+    text-decoration: none;
 }
 
 #top a:link:hover, #top a:visited:hover  {
-  /* color: black; */
-  font-weight : bold;
-  text-decoration : underline;
+    /* color: black; */
+    font-weight : bold;
+    text-decoration : underline;
 }
 
 
-.row{
-    width: 28%;
-    height: 20%;
+.row_dashboard{
+    width: 41%;
+    height: 36%;
+    /* min-height: 131px; */
     float: left;
-    margin-right: 48px;
-    margin-bottom: 171px;
+    margin-right: -5px;
+    margin-bottom: 20px;
+    margin-left: 5%;
     text-align: center;
     font-family: 'Gloria Hallelujah', cursive !important;
+    /* font-size: 41px; */
+    /* clear: both; */
 }
 .row_content{
     display: none;
 }
 .row_header{
-    
+
     border-radius: 1px #036fab;
     width: 128px;
 }
 .products_header{
-    
+
 }
 
 
@@ -120,29 +149,29 @@ padding-top: 20px;
     border-radius: 88px;
 }
 .sr-only{
-position: absolute;
-width: 1px;
-height: 1px;
-padding: 0;
-margin: -1px;
-overflow: hidden;
-clip: rect(0,0,0,0);
-border: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
 
 }
 .glyphicon {
-position: relative;
-top: 1px;
-display: inline-block;
-font-family: 'Glyphicons Halflings';
-font-style: normal;
-font-weight: 400;
-line-height: 1;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 .glyphicon-user:before {
-content: "*";
+    content: "*";
 }
 .navbar .nav>li>.dropdown-menu .user-menu:after{
     display: inline-block;

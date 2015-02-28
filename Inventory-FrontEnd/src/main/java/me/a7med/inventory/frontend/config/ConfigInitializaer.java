@@ -7,25 +7,20 @@
 package me.a7med.inventory.frontend.config;
 
 import inventory.pl.services.ServiceManager;
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
-import javax.inject.Named;
-import javax.inject.Singleton;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
 /**
+ * Web application lifecycle listener.
  *
  * @author ahmed_darweeesh
  */
-@ApplicationScoped
-@Named
-public class ConfigLoader {
-  
-    private ServiceManager manager;
-   
-    @PostConstruct
-    public void init(){
-         manager = inventory.pl.configs.ConfigLoader.getServiceManager();
+public class ConfigInitializaer implements ServletContextListener {
+private ServiceManager manager;
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        manager = inventory.pl.configs.ConfigLoader.getServiceManager();
          System.out.println("created manager status="+manager==null);
     }
 
@@ -33,7 +28,9 @@ public class ConfigLoader {
     public ServiceManager getManager() {
         return manager;
     }
- 
-    
-    
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        inventory.pl.configs.ConfigLoader.closeContext();
+    }
 }
