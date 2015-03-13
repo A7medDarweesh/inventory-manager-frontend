@@ -8,6 +8,11 @@
         <param-name>org.primefaces.extensions.DELIVER_UNCOMPRESSED_RESOURCES</param-name>
         <param-value>false</param-value>
     </context-param>
+     <context-param>
+        <description>resource caching max age</description>
+        <param-name>com.sun.faces.defaultResourceMaxAge</param-name>
+        <param-value>2592000000</param-value>
+    </context-param>
     <mime-mapping>
         <extension>less</extension>
         <mime-type>text/css</mime-type>
@@ -23,6 +28,11 @@
             <param-name>acceptURLPattern</param-name>
             <param-value>.*\.(js|json|css).*</param-value>
         </init-param>
+         <init-param>
+            <param-name>reloadTime</param-name>
+            <param-value>2592000</param-value>
+        </init-param>
+         
     </filter>
     <filter-mapping>
         <filter-name>responseCacheFilter</filter-name>

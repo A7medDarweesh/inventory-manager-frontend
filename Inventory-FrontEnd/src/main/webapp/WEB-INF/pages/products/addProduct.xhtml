@@ -6,26 +6,6 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html" id="parent">
     
-    <p:commandButton oncomplete="PF('newProject').show();" value="new project"/>
-    <p:panelGrid columns="3">
-        <p:outputLabel value="1"></p:outputLabel>
-        <p:outputLabel value="2"></p:outputLabel>
-        <p:outputLabel value="1"></p:outputLabel>
-        <p:outputLabel value="3"></p:outputLabel>
-        <p:outputLabel value="4"></p:outputLabel>
-        <p:outputLabel value="5"></p:outputLabel>
-        <p:outputLabel value="6"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-    </p:panelGrid>
-    <p:dialog widgetVar="newProject" dynamic="true" fitViewport="true" header="new project">
-         <h:panelGroup id="container_test">
-                           
-             <ui:include src="dialogs/newProject.xhtml" >
-                                
-                            </ui:include>
-                        </h:panelGroup>
-    </p:dialog>
+   
     </ui:composition>
 
