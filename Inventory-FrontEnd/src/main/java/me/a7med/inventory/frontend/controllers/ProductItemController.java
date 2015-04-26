@@ -8,7 +8,7 @@ package me.a7med.inventory.frontend.controllers;
 
 import inventory.pl.entities.FeatureValue;
 import inventory.pl.entities.Features;
-import inventory.pl.entities.ProductItems;
+import inventory.pl.entities.ProductItem;
 import inventory.pl.services.ServiceManager;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,10 +33,10 @@ public class ProductItemController implements Serializable{
     private String code;
     private List<FeatureValue>values;
     
-    public List<ProductItems>getAllItems(){
+    public List<ProductItem>getAllItems(){
         values=null;
         System.out.println("getting product items for"+productController.getCurrentProduct().getId());
-        List<ProductItems> items = manager.getProductService().getProductItems(productController.getCurrentProduct().getId());
+        List<ProductItem> items = manager.getProductService().getProductItems(productController.getCurrentProduct().getId());
         System.out.println("size="+items.size());
         return items;
     }
@@ -62,7 +62,7 @@ public class ProductItemController implements Serializable{
     }
     public void saveProduct(){
         System.out.println("values size="+code);
-        ProductItems item=new ProductItems();
+        ProductItem item=new ProductItem();
         item.setCode(code);
         item.setCreationeDate(new Date());
         
@@ -75,7 +75,7 @@ public class ProductItemController implements Serializable{
         manager.getProductService().saveProductItem(item);
         
     }
-     public List<FeatureValue> getItemValue(ProductItems id){
+     public List<FeatureValue> getItemValue(ProductItem id){
          if(id==null){
              return new ArrayList<>();
          }
