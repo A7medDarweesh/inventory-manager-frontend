@@ -27,10 +27,19 @@ public class ConfigLoader {
 
     @PostConstruct
     public void init() {
-        manager = inventory.pl.configs.ConfigLoader.getServiceManager();
-        searchService = manager.getSearchService();
-        saveService = manager.getSaveService();
-        System.out.println("created manager status=" + searchService.getClass());
+        
+    }
+
+    public void setManager(ServiceManager manager) {
+        this.manager = manager;
+    }
+
+    public void setSearchService(SearchService searchService) {
+        this.searchService = searchService;
+    }
+
+    public void setSaveService(SaveService saveService) {
+        this.saveService = saveService;
     }
 
     @Produces

@@ -6,19 +6,25 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html" id="parent">
     
-    <p:commandButton oncomplete="PF('newProject').show();" value="new project"/>
-    <p:panelGrid columns="3">
-        <p:outputLabel value="1"></p:outputLabel>
-        <p:outputLabel value="2"></p:outputLabel>
-        <p:outputLabel value="1"></p:outputLabel>
-        <p:outputLabel value="3"></p:outputLabel>
-        <p:outputLabel value="4"></p:outputLabel>
-        <p:outputLabel value="5"></p:outputLabel>
-        <p:outputLabel value="6"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-    </p:panelGrid>
+    <div class="controls-row">
+        <p:commandButton value="Create New" oncomplete="PF('newProject').show();"></p:commandButton>
+    </div>
+    <p:dataTable  id="resTable" value="#{projectController.userProjectList}" var="res" 
+                                              paginator="true" rows="100" 
+                                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+                                              rowsPerPageTemplate="3,25,50,100,250,500" selectionMode="single" selection="#{projectController.slectedProject}"
+                                              > 
+        <p:column headerText="Project name" filterBy="name" filterMatchMode="contains">
+            <h:outputText value="#{res.name}"/>
+        </p:column>
+        <p:column headerText="Project desc" filterBy="name" filterMatchMode="contains">
+            <h:outputText value="#{res.description}"/>
+        </p:column>
+        <p:column headerText="Project warehouses" filterBy="name" filterMatchMode="contains">
+            <h:outputText value="#{res.warehouses.size}"/>
+        </p:column>
+
+                                </p:dataTable> 
     <p:dialog widgetVar="newProject" dynamic="true" fitViewport="true" header="new project">
          <h:panelGroup id="container_test">
                            

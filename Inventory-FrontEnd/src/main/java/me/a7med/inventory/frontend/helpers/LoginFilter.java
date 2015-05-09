@@ -110,22 +110,22 @@ public class LoginFilter implements Filter {
         if (debug) {
             log("LoginFilter:doFilter()");
         }
-        doBeforeProcessing(request, response);
-//        if(ignore){
-//            System.out.println("setting cache control for"+httpServletRequest.getRequestURI());
-//             httpResponse.setDateHeader("Expires", System.currentTimeMillis() + 2419200000L); // 1 month in future.
-//            //httpResponse.setDateHeader("Last-Modified", System.currentTimeMillis() - 2419200000L); // 1 month in past.
-//            httpResponse.setHeader("Cache-Control", "public");
-//        }
+        doBeforeProcessing(request, httpResponse);
+        if(ignore){
+            System.out.println("setting cache control for"+httpServletRequest.getRequestURI());
+             httpResponse.setDateHeader("Expires", System.currentTimeMillis() + 2419200000L); // 1 month in future.
+            httpResponse.setDateHeader("Last-Modified", System.currentTimeMillis() - 2419200000L); // 1 month in past.
+            httpResponse.setHeader("Cache-Control", "public");
+        }
         if (!ignore&&!login.isLoggedIn()) {
            httpServletRequest.getRequestDispatcher("/login.xhtml").forward(request, response);
             log("redirecting");
         // ((HttpServletResponse) response).sendRedirect(loginURL); // Not logged in, so redirect to error page.
         } else {
-            chain.doFilter(request, response); // Logged in, so just continue.
+            chain.doFilter(request, httpResponse); // Logged in, so just continue.
         }
 
-        doAfterProcessing(request, response);
+        doAfterProcessing(request, httpResponse);
 
         // If there was a problem, we want to rethrow it if it is
         // a known type, otherwise log it.

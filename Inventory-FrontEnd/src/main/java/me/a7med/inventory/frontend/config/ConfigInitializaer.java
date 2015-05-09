@@ -5,6 +5,7 @@
  */
 package me.a7med.inventory.frontend.config;
 
+import inventory.pl.services.ServiceManager;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletContextEvent;
@@ -23,6 +24,10 @@ public class ConfigInitializaer implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("init context"+manager.getClass());
+        ServiceManager manager2 = inventory.pl.configs.ConfigLoader.getServiceManager();
+         manager.setSaveService(manager2.getSaveService());
+         manager.setSearchService(manager2.getSearchService());
+         manager.setManager(manager2);
     }
 
    

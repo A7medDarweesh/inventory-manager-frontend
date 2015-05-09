@@ -30,7 +30,7 @@
         </init-param>
         <init-param>
             <param-name>reloadTime</param-name>
-            <param-value>2592000</param-value>
+            <param-value>259200000000</param-value>
         </init-param>
     </filter>
     <filter>
