@@ -10,6 +10,7 @@ import inventory.pl.entities.User;
 import inventory.pl.entities.Warehouse;
 import inventory.pl.services.SaveService;
 import inventory.pl.services.SearchService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -90,10 +91,15 @@ public class ProjectController {
 
     public void createProject() {
         System.out.println("no of users in project=" + projectMembers.size() + " and warehouse is=" + newProjectWarehouse.getName());
+        Project p=new Project();
+        p.setDescription(newProjectName);
+        p.setName(newProjectName);
+        
+        saveService.createProject(p, projectMembers,newProjectWarehouse);
     }
 
     public List<Project> getUserProjectList() {
-        return userProjectList;
+        return searchService.getUserProjects(currentUser);
     }
 
     public void setUserProjectList(List<Project> userProjectList) {

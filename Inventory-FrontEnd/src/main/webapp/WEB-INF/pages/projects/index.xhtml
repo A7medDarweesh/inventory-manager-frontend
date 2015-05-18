@@ -9,19 +9,20 @@
     <div class="controls-row">
         <p:commandButton value="Create New" oncomplete="PF('newProject').show();"></p:commandButton>
     </div>
-    <p:dataTable  id="resTable" value="#{projectController.userProjectList}" var="res" 
+    <p:dataTable  id="prejectsTable" value="#{projectController.userProjectList}" var="project" 
                                               paginator="true" rows="100" 
                                               paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
-                                              rowsPerPageTemplate="3,25,50,100,250,500" selectionMode="single" selection="#{projectController.slectedProject}"
+                                              rowsPerPageTemplate="3,25,50,100,250,500" selectionMode="single"
+                                              selection="#{projectController.slectedProject}" rowKey="#{project.id}"
                                               > 
         <p:column headerText="Project name" filterBy="name" filterMatchMode="contains">
-            <h:outputText value="#{res.name}"/>
+            <h:outputText value="#{project.name}"/>
         </p:column>
         <p:column headerText="Project desc" filterBy="name" filterMatchMode="contains">
-            <h:outputText value="#{res.description}"/>
+            <h:outputText value="#{project.description}"/>
         </p:column>
-        <p:column headerText="Project warehouses" filterBy="name" filterMatchMode="contains">
-            <h:outputText value="#{res.warehouses.size}"/>
+        <p:column headerText="Project " filterBy="name" filterMatchMode="contains">
+            <h:outputText value="#{project.warehouses.get(0).name}"/>
         </p:column>
 
                                 </p:dataTable> 
