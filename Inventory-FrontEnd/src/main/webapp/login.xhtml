@@ -18,7 +18,8 @@
                 <ui:define name="content">
                     <h:form id="loginForm">
                         <p:growl id="growl" showDetail="true" life="3000" />  
-                        <p:panelGrid columns="2" >
+                        <p:panelGrid columns="2" styleClass="container">
+                        
                             <f:facet name="header">User Login</f:facet>
                             <p:outputLabel for="user" value="User Name"/>
                             <p:inputText id="user" value="#{login.userName}" required="true" requiredMessage="User Name Can't be Empty"/>
@@ -41,7 +42,7 @@
         </f:view>
                <p:ajaxStatus style="width:26px;height:26px;" id="ajaxStatusPanel">  
             <f:facet name="start">  
-                <p:graphicImage value="./unfiltered/images/loading.gif" width="150" height="100" style="position: absolute;left: 40%;top: 40%;z-index: 100000;"/>  
+                 <h:graphicImage value="./images/loading.gif" width="150" height="100" style="position: absolute;left: 40%;top: 40%;z-index: 1000000;"/>   
             </f:facet>  
 
             <f:facet name="complete">  

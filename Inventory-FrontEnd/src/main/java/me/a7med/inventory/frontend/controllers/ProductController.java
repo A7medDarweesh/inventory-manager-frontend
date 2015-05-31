@@ -6,7 +6,6 @@
 
 package me.a7med.inventory.frontend.controllers;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import inventory.pl.entities.Features;
 import inventory.pl.entities.Product;
 import inventory.pl.helpers.FeatureType;
