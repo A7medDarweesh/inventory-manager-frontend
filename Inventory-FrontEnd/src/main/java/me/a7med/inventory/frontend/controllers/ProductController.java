@@ -30,9 +30,9 @@ public class ProductController implements Serializable{
     ServiceManager manager;
     private String productName;
     private String productDescription;
+    private String productquantityType;
     private Product currentProduct;
-    private List<Features>featureses=new ArrayList<>();
-
+    private List<Features>features=new ArrayList<>();
     public String getProductName() {
         return productName;
     }
@@ -61,15 +61,15 @@ public class ProductController implements Serializable{
     }
 
     public List<Features> getFeatureses() {
-        return featureses;
+        return features;
     }
 
     public void setFeatureses(List<Features> featureses) {
-        this.featureses = featureses;
+        this.features = featureses;
     }
     public void addFeature(){
-        System.out.println("adding feature");
-        featureses.add(new Features());
+        System.out.println(features);
+        features.add(new Features());
     }
     public FeatureType[]getFeatureTypes(){
         return FeatureType.values();
@@ -80,15 +80,23 @@ public class ProductController implements Serializable{
         p.setName(productName);
         p.setCreateDate(new Date());
         manager.getProductService().saveProduct(p);
-        for(int i=0;i<featureses.size();i++){
-            featureses.get(i).setOrder(i);
-            featureses.get(i).setProduct(p);
+        for(int i=0;i<features.size();i++){
+            features.get(i).setOrder(i);
+            features.get(i).setProduct(p);
         }
-        p.setProductFeatures(featureses);
+        p.setProductFeatures(features);
         manager.getProductService().saveProduct(p);
     }
     public void viewDetails(Product p){
         System.out.println("going to details for product "+p.getName());
         currentProduct=p;
+    }
+
+    public String getProductquantityType() {
+        return productquantityType;
+    }
+
+    public void setProductquantityType(String productquantityType) {
+        this.productquantityType = productquantityType;
     }
 }

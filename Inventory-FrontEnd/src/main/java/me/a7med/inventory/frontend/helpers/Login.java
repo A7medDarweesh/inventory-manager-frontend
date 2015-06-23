@@ -55,7 +55,6 @@ public class Login implements Serializable {
     }
 
     public String login() {
-        System.out.println("search service status="+searchService.getClass());
         User logged = searchService.login(userName,password);
 
         if (logged != null) {

@@ -179,3 +179,23 @@
     left:262px;
     top:-17px;
 }
+.form-row{
+   width:100%; 
+   float: left;
+   margin-bottom: 5px;
+}
+.form-control{
+    float: left;
+    /* margin-right: 4px; */
+    /* padding: 5px; */
+    font-size: 12px;
+    margin-left: -14px;
+}
+.col-2{
+    width: 15%;
+    margin-right: 0px;
+}
+.col-4{
+    width: 20%;
+    margin-right: 16%;
+}

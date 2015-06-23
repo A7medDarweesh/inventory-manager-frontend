@@ -36,9 +36,11 @@
 }
 
 .left_content {
-    background-color: #dddddd;
+    /* background-color: #dddddd; */
     padding: 5px;
-    margin-left: 170px;
+    margin-left: 39%;
+    margin-top: 7%;
+    width: auto;
 }
 
 .right_content {

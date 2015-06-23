@@ -9,16 +9,40 @@
     <!--
     --> 
     <p:growl id='mesages'/>
-    <p:panelGrid columns="4" id="productContainer" >
-        
-
-        <p:outputLabel for="productName" value="Product Name"/>
-        <p:inputText id="productName" value="#{productCon.productName}" />
-        <f:facet name="footer">
-            <p:commandButton action="#{screenController.testAction('new product')}" value="test"/>
-        </f:facet>
-        </p:panelGrid>
+    <p:panelGrid columns="2" id="product_grid">
+        <p:outputLabel for="projectName" value="Product Name"/>
+         <p:inputText id="projectName" value="#{productCon.productName}"  required="true" requiredMessage="product name can't be empty"/>
     
+        <p:outputLabel for="productquantity" value="Amount Type"/>
+          <p:selectOneMenu id="productquantity" value="#{productCon.productquantityType}">
+                <f:selectItem  itemValue="Quantity" itemLabel="Quantity"/><f:selectItem itemValue="Number" itemLabel="Number"/></p:selectOneMenu>
+         <p:outputLabel for="productDesc" value="Product Description"/>
+         <p:inputTextarea id="productDesc" value="#{productCon.productDescription}"/>
+    </p:panelGrid>
+        
+    <p:commandButton id="addFeature" value="Add Product Features"  actionListener="#{productCon.addFeature()}" update="FeaturesContainer,mesages" process="@this,FeaturesContainer"/>
+   
+    <p:separator/>
+    <p:panelGrid columns="2" id="FeaturesContainer" >
+        <f:facet name="header">Product Features</f:facet>
+        <c:forEach  items="#{productCon.featureses}" var="fet" varStatus="status">
+        <p:outputLabel  value="Feature Name"/>
+        <p:inputText  value="#{fet.name}" required="true"/>
+          <p:outputLabel  value="Product Name"/>
+          <p:selectOneMenu value="#{fet.type}" required="true">
+              <f:selectItems value="#{productCon.featureTypes}" var="type" itemValue="#{type}" itemLabel="#{type}"/>
+          </p:selectOneMenu>
+          
+        </c:forEach>
+
+        <f:facet name="footer">
+
+            <p:commandButton process="product_grid,FeaturesContainer" partialSubmit="true" update="products" value="Save Product" action="#{productCon.saveProduct()}" icon="ui-icon-arrowreturnthick-1-w" oncomplete="PF('addProduct').hide()"/>
+        </f:facet>
+</p:panelGrid>
+
+    
+
 
 </ui:composition>
 
