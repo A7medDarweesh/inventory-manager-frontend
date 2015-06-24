@@ -13,12 +13,12 @@
     <p:panelGrid columns="4" id="requestContainer" >
         
 
-        <p:outputLabel for="requestProject" value="Product Name"/>
-        <p:selectOneMenu value="#{requstsController.projectToAddRequestTo}" id="requestProject" converter="projectConverter">
+        <p:outputLabel for="requestProject" value="Add request to Project:"/>
+        <p:selectOneMenu value="#{requstsController.projectToAddRequestTo}" id="requestProject" converter="projectConverter" required="true">
         <f:selectItems value="#{projectController.userProjectList}" var="project" itemLabel="#{project.name}" itemValue="#{project}"></f:selectItems>
         </p:selectOneMenu>
         <f:facet name="footer">
-            <p:commandButton action="#{screenController.testAction('new request')}" value="Add Request"/>
+            <p:commandButton action="#{requstsController.addRequest()}" value="Add Request" process="requestContainer"/>
         </f:facet>
         </p:panelGrid>
     

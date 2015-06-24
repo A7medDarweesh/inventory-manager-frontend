@@ -67,4 +67,7 @@ public Project getProjectToAddRequestTo() {
 public void setProjectToAddRequestTo(Project projectToAddRequestTo) {
 	this.projectToAddRequestTo = projectToAddRequestTo;
 }
+public void addRequest(){
+	saveService.addRequest(projectToAddRequestTo);
+}
 }
