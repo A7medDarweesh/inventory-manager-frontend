@@ -8,6 +8,7 @@ import inventory.pl.services.SearchService;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -69,5 +70,8 @@ public void setProjectToAddRequestTo(Project projectToAddRequestTo) {
 }
 public void addRequest(){
 	saveService.addRequest(projectToAddRequestTo);
+}
+public void editRequest(){
+	FacesContext.getCurrentInstance().getExternalContext().getFlash().put("needsRequest", selectedRequest);
 }
 }

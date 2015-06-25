@@ -6,13 +6,14 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:h="http://xmlns.jcp.org/jsf/html" id="parent"
         xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
-
-	<p:dataTable value="#{requstsController.allRequsts}" var="request"
+	<p:commandButton validateClient="true" value="Add Request" oncomplete="PF('newRequest').show();"> </p:commandButton>
+	<p:commandButton validateClient="true" update="@form:container_panel" value="Edit Request" actionListener="#{requstsController.editRequest()}" action="#{screenController.switchScreen('requests','addProduct')}" disabled=""> </p:commandButton>
+	<p:dataTable id="requestsTable" value="#{requstsController.allRequsts}" var="request"
 		paginator="true" rows="100"
 		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-		rowsPerPageTemplate="3,25,50,100,250,500" selectionMode="single"
+		rowsPerPageTemplate="3,25,50,100,250,500" selectionMode="single" 
 		selection="#{requstsController.selectedRequest}"
-		rowKey="#{request.id}">
+		rowKey="#{request.id}" >
 		<p:column headerText="Project name" filterBy="project.name"
 			filterMatchMode="contains">
 			<h:outputText value="#{request.project.name}" />
