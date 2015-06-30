@@ -11,6 +11,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 @Named
 @RequestScoped
@@ -71,7 +72,12 @@ public void setProjectToAddRequestTo(Project projectToAddRequestTo) {
 public void addRequest(){
 	saveService.addRequest(projectToAddRequestTo);
 }
-public void editRequest(){
-	FacesContext.getCurrentInstance().getExternalContext().getFlash().put("needsRequest", selectedRequest);
+public void editRequest(NeedsRequest needsRequest){
+    System.out.println("editing requeast");
+    HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+    if(session != null ){
+        session.setAttribute("needsRequest", needsRequest);
+    }
+        
 }
 }

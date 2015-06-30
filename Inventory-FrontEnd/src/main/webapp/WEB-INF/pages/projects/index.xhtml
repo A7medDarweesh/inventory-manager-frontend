@@ -22,7 +22,7 @@
             <h:outputText value="#{project.description}"/>
         </p:column>
         <p:column headerText="Project " filterBy="name" filterMatchMode="contains">
-            <h:outputText value="#{project.warehouses.get(0).name}"/>
+            <h:outputText value="#{projectController.getWarehouseName(project)}"/>
         </p:column>
 
                                 </p:dataTable> 

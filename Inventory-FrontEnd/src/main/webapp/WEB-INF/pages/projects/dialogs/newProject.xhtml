@@ -22,15 +22,15 @@
     </div>
      <div class="ui-grid-row">
         <div class="ui-grid-col-4">  <p:outputLabel for="projectWarehouse" value="Project Warehouse"/></div>
-        <div class="ui-grid-col-4"> <p:selectOneMenu id="projectWarehouse" value="#{projectController.newProjectWarehouse}" filter="true" converter="warehouseConverter" filterMatchMode="startsWith" required="true">
-            <f:selectItems value="#{warehousesController.all}" var="warehouse" itemLabel="#{warehouse.name}" itemValue="#{warehouse}" />
- 
-        </p:selectOneMenu>
+        <div class="ui-grid-col-4"> <p:inputText id="projectWarehouse" value="#{projectController.newProjectWarehouse}"  required="true">
+            
+        </p:inputText>
          </div>
     </div>
     <div class="ui-grid-row">
         <div class="ui-grid-col-4">  <p:outputLabel for="projectUsers" value="Project Users"/></div>
-        <div class="ui-grid-col-4"> <p:selectManyMenu id="projectUsers" value="#{projectController.projectMembers}" filter="true" converter="userConverter" filterMatchMode="startsWith" required="true">
+        <div class="ui-grid-col-4">
+            <p:selectManyMenu id="projectUsers" value="#{projectController.projectMembers}" filter="true" converter="userConverter" filterMatchMode="startsWith" required="true">
                 <f:selectItems value="#{userController.allUsers}" var="user" itemLabel="#{user.name}" itemValue="#{user}" />
  
         </p:selectManyMenu>

@@ -12,6 +12,7 @@ import inventory.pl.services.SaveService;
 import inventory.pl.services.SearchService;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -29,8 +30,8 @@ public class ProjectController {
     private Project slectedProject;
     private String newProjectName;
     private String newProjectDesc;
-    private List<User> projectMembers;
-    private Warehouse newProjectWarehouse;
+    private Set<User> projectMembers;
+    private String newProjectWarehouse;
     @Inject
     SearchService searchService;
     @Inject
@@ -69,19 +70,19 @@ public class ProjectController {
         this.newProjectDesc = newProjectDesc;
     }
 
-    public List<User> getProjectMembers() {
+    public Set<User> getProjectMembers() {
         return projectMembers;
     }
 
-    public void setProjectMembers(List<User> projectMembers) {
+    public void setProjectMembers(Set<User> projectMembers) {
         this.projectMembers = projectMembers;
     }
 
-    public Warehouse getNewProjectWarehouse() {
+    public String getNewProjectWarehouse() {
         return newProjectWarehouse;
     }
 
-    public void setNewProjectWarehouse(Warehouse newProjectWarehouse) {
+    public void setNewProjectWarehouse(String newProjectWarehouse) {
         this.newProjectWarehouse = newProjectWarehouse;
     }
 
@@ -89,13 +90,12 @@ public class ProjectController {
         return searchService.getUserProjects(currentUser);
     }
 
-    public void createProject() {
-        System.out.println("no of users in project=" + projectMembers.size() + " and warehouse is=" + newProjectWarehouse.getName());
+    public void createProject() {        
         Project p=new Project();
         p.setDescription(newProjectName);
         p.setName(newProjectName);
         
-        saveService.createProject(p, projectMembers,newProjectWarehouse);
+        saveService.createProject(p, new ArrayList<User>(projectMembers),newProjectWarehouse);
     }
 
     public List<Project> getUserProjectList() {
@@ -104,5 +104,11 @@ public class ProjectController {
 
     public void setUserProjectList(List<Project> userProjectList) {
         this.userProjectList = userProjectList;
+    }
+    public String getWarehouseName(Project p){
+        if(p.getWarehouses()!=null){
+            return p.getWarehouses().getName();
+        }
+        return "No Warehouse Yet";
     }
 }

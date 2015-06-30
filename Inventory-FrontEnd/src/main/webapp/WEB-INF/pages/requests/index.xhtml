@@ -7,24 +7,27 @@
         xmlns:h="http://xmlns.jcp.org/jsf/html" id="parent"
         xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
 	<p:commandButton validateClient="true" value="Add Request" oncomplete="PF('newRequest').show();"> </p:commandButton>
-	<p:commandButton validateClient="true" update="@form:container_panel" value="Edit Request" actionListener="#{requstsController.editRequest()}" action="#{screenController.switchScreen('requests','addProduct')}" disabled=""> </p:commandButton>
-	<p:dataTable id="requestsTable" value="#{requstsController.allRequsts}" var="request"
+         
+        
+	<p:dataTable id="requestsTable" value="#{requstsController.allRequsts}" var="needsRequest"
 		paginator="true" rows="100"
 		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 		rowsPerPageTemplate="3,25,50,100,250,500" selectionMode="single" 
 		selection="#{requstsController.selectedRequest}"
-		rowKey="#{request.id}" >
+		rowKey="#{needsRequest.id}" >
 		<p:column headerText="Project name" filterBy="project.name"
 			filterMatchMode="contains">
-			<h:outputText value="#{request.project.name}" />
+			<h:outputText value="#{needsRequest.project.name}" />
 		</p:column>
 		<p:column headerText="Request Date" filterBy="requestDate"
 			filterMatchMode="contains">
-			<h:outputText value="#{request.requestDate}" />
+			<h:outputText value="#{needsRequest.requestDate}" />
 		</p:column>
-		<p:column headerText="No. Of Items " >
-			<h:outputText value="#{request.productList.size()}" />
+            <p:column headerText="Update request" >
+			<p:commandButton validateClient="true" update="@form:container_panel" value="Edit Request" actionListener="#{requstsController.editRequest(needsRequest)}" action="#{screenController.switchScreen('requests','addProduct')}" process="@this" > 
+       </p:commandButton>
 		</p:column>
+		
 
 	</p:dataTable>
     <ezcomp:objectControls showDelete="true"/>

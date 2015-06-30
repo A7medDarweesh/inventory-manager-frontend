@@ -199,3 +199,24 @@
     width: 20%;
     margin-right: 16%;
 }
+.controlls{
+    width: 100%
+;
+    /* position: absolute; */
+    /* top: 2%; */
+    /* left: 20%; */
+    margin-bottom: 2%;
+    float: left;
+}
+.data_display{
+    /* background: yellowgreen; */
+    /* position: absolute; */
+    top: 10%;
+    left: 30%;
+    float: left;
+}
+.form-group{
+    /* background: blueviolet; */
+    /* float: left; */
+    margin-bottom: 2%;
+}

@@ -360,7 +360,18 @@
                             <li class="treeview buy_order_menu">
                                 <a href="#">
                                     <i class="fa fa-bar-chart-o"></i>
-                                    <span>Orders</span>
+                                    <span>Requests</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><p:commandLink action="#{screenController.switchScreen('requests','index')}" update="container_panel" immediate="true" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Orders List</p:commandLink></li>
+                                    <li><p:commandLink action="#{screenController.switchScreen('requests','reports')}" update="container_panel" immediate="true" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Orders Reports</p:commandLink></li>
+                                </ul>
+                            </li>
+                            <li class="treeview buy_order_menu">
+                                <a href="#">
+                                    <i class="fa fa-bar-chart-o"></i>
+                                    <span>Buy Orders</span>
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
@@ -368,7 +379,6 @@
                                     <li><p:commandLink action="#{screenController.switchScreen('buy_order','reports')}" update="container_panel" immediate="true" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Orders Reports</p:commandLink></li>
                                 </ul>
                             </li>
-
                             <li class="treeview inventory_in_menu">
                                 <a href="#">
                                     <i class="fa fa-bar-chart-o"></i>

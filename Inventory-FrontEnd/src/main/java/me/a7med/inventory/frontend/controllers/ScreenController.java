@@ -29,6 +29,7 @@ public class ScreenController implements Serializable {
     }
     
     public void switchScreen(String newScreen,String newPage){
+        System.out.println("switching to:"+newScreen+"::"+newPage);
         screen=newScreen;
         page=newPage;
     }
