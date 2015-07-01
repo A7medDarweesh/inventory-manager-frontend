@@ -73,7 +73,6 @@ public void addRequest(){
 	saveService.addRequest(projectToAddRequestTo);
 }
 public void editRequest(NeedsRequest needsRequest){
-    System.out.println("editing requeast");
     HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
     if(session != null ){
         session.setAttribute("needsRequest", needsRequest);

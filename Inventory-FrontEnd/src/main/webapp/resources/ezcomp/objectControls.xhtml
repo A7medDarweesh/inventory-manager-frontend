@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -13,11 +14,15 @@
         <cc:attribute name="editAction" method-signature="void action()"/>
         <cc:attribute name="editCompletHandler"/>
         <cc:attribute name="widgetsToUpdate" />
-        <cc:attribute name="showDelete" type="boolean"/>  
+        <cc:attribute name="showDelete" type="java.lang.Boolean" default="false"/>  
         
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
+    <div class="form-group">
+                     <p:commandLink styleClass="btn btn-primary col-sm-2"> 
+                     <i class="fa fa-save"></i>#{cc.attrs.addLabel}</p:commandLink>
+                    </div>
     </cc:implementation>
 </html>
