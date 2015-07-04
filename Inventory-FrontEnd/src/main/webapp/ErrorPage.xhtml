@@ -13,7 +13,7 @@
             <ui:composition template="/template.xhtml">
                 <ui:define name="left">
                     <p>An Error encountered</p>
-                    <p:commandLink actionListener="#{screenController.switchScreen('dashboard','index')}" action="index" value="Click Here to return back"/>
+                    <p:commandLink actionListener="#{screenController.switchScreen('dashboard','index')}" action="index" immediate="true" process="@this" value="Click Here to return back" />
                 </ui:define>
             </ui:composition>
         </f:view>

@@ -91,8 +91,10 @@
     width: 100%;
 }
 .row_container{
-    margin-bottom: 2%;
+    margin-bottom: -4%;
     margin-right: 4%;
+    clear: both;
+    float: left;
 }
 .row_container .ui-panel .ui-widget-header{
     background: #156CDD;
@@ -219,4 +221,8 @@
     /* background: blueviolet; */
     /* float: left; */
     margin-bottom: 2%;
+    float: left;
+    /* clear: both; */
+    width: 100%;
+    margin-left: 0px;
 }

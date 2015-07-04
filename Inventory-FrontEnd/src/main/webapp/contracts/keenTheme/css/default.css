@@ -30,3 +30,7 @@ a:link:hover, a:visited:hover  {
 .red{
     color: #D20005;
 }
+.ui-button.btn.btn-primary{
+    box-shadow: none;
+    background: #DFC2A5;
+}

@@ -4,28 +4,88 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://xmlns.jcp.org/jsf/html" id="parent">
-    
-    <p:commandButton oncomplete="PF('newProject').show();" value="new project"/>
-    <p:panelGrid columns="3">
-        <p:outputLabel value="1"></p:outputLabel>
-        <p:outputLabel value="2"></p:outputLabel>
-        <p:outputLabel value="1"></p:outputLabel>
-        <p:outputLabel value="3"></p:outputLabel>
-        <p:outputLabel value="4"></p:outputLabel>
-        <p:outputLabel value="5"></p:outputLabel>
-        <p:outputLabel value="6"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-    </p:panelGrid>
-    <p:dialog widgetVar="newProject" dynamic="true" fitViewport="true" header="new project">
-         <h:panelGroup id="container_test">
-                           
-             <ui:include src="dialogs/newProject.xhtml" >
-                                
-                            </ui:include>
-                        </h:panelGroup>
-    </p:dialog>
-    </ui:composition>
+                xmlns:h="http://xmlns.jcp.org/jsf/html" id="parent"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <p:growl id="messages" showDetail="true" showSummary="true" sticky="true"/>
+    <div class="row_container ui-grid-col-8">
+        <div class="desc">
+            <h1>Inventory-In Transaction</h1>
+        </div>
+        <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">New Transaction</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+                    <div class="form-group">
+                        <p:outputLabel for="warehouse" styleClass="form_label" value="Select Warehouse"/>
+
+                        <p:selectOneMenu value="#{transactionController.warehouse}" converter="warehouseConverter" id="warehouse">
+                            <f:selectItems value="#{transactionController.warehouses}" var="warehouse" itemLabel="#{warehouse.name}" itemValue="#{warehouse}"/>
+                        </p:selectOneMenu>
+
+                    </div>
+                    <div class="form-group">
+                        <p:outputLabel for="product" styleClass="form_label" value="Select Product"/>
+
+                        <p:selectOneMenu value="#{transactionController.selectedProduct}" converter="productConverter" id="product">
+                            <f:selectItems value="#{transactionController.products}" var="product" itemLabel="#{product.name}" itemValue="#{product}"/>
+                        </p:selectOneMenu>
+                    </div>
+
+
+
+                    <div class="box-footer">
+                        <p:commandButton partialSubmit="true" styleClass="btn btn-primary" actionListener="#{transactionController.reload()}" update="addRequestDetail,messages" value="Add Product" process="warehouse,product,@this"/>
+
+                    </div>
+
+                </div><!-- /.box -->
+            </div>
+
+
+        
+    </div>
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Enter Item Data</h3>
+        </div>
+        <h:panelGroup id="addRequestDetail" >
+
+            <div class="form-group">
+                <p:outputLabel for="code" styleClass="form_label" value="Item Code"/>
+                <p:inputText id="code" value="#{transactionController.code}" />
+            </div>
+
+            <c:forEach  items="#{transactionController.values}" var="fet" varStatus="status">
+                <h:panelGroup  rendered="#{fet.feature.type.toString() eq 'TEXT'}">
+                    <div class="form-group">
+                        <p:outputLabel  styleClass="form_label"  value="#{fet.feature.name}"/>
+                        <p:inputText  value="#{fet.value}" required="true"/>
+                    </div>
+
+                </h:panelGroup> 
+                <h:panelGroup   rendered="#{fet.feature.type.toString() eq 'RADIO'}">
+                    <div class="form-group">
+                        <p:outputLabel  value="#{fet.feature.name}"/>
+                        <p:selectOneRadio  value="#{fet.value}">
+                            <f:selectItem itemLabel="Yes" itemValue="Yes" />
+                            <f:selectItem itemLabel="No" itemValue="No" />
+                        </p:selectOneRadio>
+                    </div>
+
+                </h:panelGroup>
+            </c:forEach>
+            <div class="box-footer">
+                <p:commandButton partialSubmit="true" styleClass="btn btn-primary" actionListener="#{transactionController.saveProduct()}" update="messages" value="Add Product To Warehouse" process="addRequestDetail"/>
+
+                    </div>
+           
+        </h:panelGroup>
+    </div>
+        </div>
+</ui:composition>
 
