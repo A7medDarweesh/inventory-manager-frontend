@@ -6,6 +6,7 @@
 
 package me.a7med.inventory.frontend.controllers;
 
+import inventory.pl.entities.Role;
 import inventory.pl.entities.User;
 import inventory.pl.services.SaveService;
 import inventory.pl.services.SearchService;
@@ -27,12 +28,14 @@ public class UserController {
     SearchService searchService;
     @Inject
     SaveService saveService;
+    private Role selectedRole;
+    private List<User> selectedUsers;
     public List<User>getAllUsers(){
-        System.out.println("getting users");
         return searchService.getAllusers();
     }
     public void saveUser(){
-        saveService.addUser(userName,password);
+        System.out.println("saving user");
+        saveService.addUser(userName,password,selectedRole);
     }
 
     public String getUserName() {
@@ -50,5 +53,26 @@ public class UserController {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    public Role getSelectedRole() {
+        return selectedRole;
+    }
+
+    public void setSelectedRole(Role selectedRole) {
+        this.selectedRole = selectedRole;
+    }
+    public List<Role> getUserRoles(){
+        return searchService.getAvailableRoles();
+    }
+    public void deleteUser(User u){
+        saveService.deleteUser(u);
+    }
+
+    public List<User> getSelectedUsers() {
+        return selectedUsers;
+    }
+
+    public void setSelectedUsers(List<User> selectedUsers) {
+        this.selectedUsers = selectedUsers;
+    }
 }

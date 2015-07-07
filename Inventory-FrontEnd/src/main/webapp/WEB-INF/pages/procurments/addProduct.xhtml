@@ -6,27 +6,79 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html" id="parent">
     
-    <p:commandButton oncomplete="PF('newProject').show();" value="new project"/>
-    <p:panelGrid columns="3">
-        <p:outputLabel value="1"></p:outputLabel>
-        <p:outputLabel value="2"></p:outputLabel>
-        <p:outputLabel value="1"></p:outputLabel>
-        <p:outputLabel value="3"></p:outputLabel>
-        <p:outputLabel value="4"></p:outputLabel>
-        <p:outputLabel value="5"></p:outputLabel>
-        <p:outputLabel value="6"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-        <p:outputLabel value="7"></p:outputLabel>
-    </p:panelGrid>
-    <p:dialog widgetVar="newProject" dynamic="true" fitViewport="true" header="new project">
-    
-         <h:panelGroup id="container_test">
-                           
-             <ui:include src="dialogs/newProject.xhtml" >
-                                
-                            </ui:include>
-                        </h:panelGroup>
-    </p:dialog>
+   
+  <div class="row_container ui-grid-col-9">
+<div class="desc">
+            <h1>User Management</h1>
+        </div>
+        <div class="col-md-9">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Transfer Item</h3>
+                </div>
+                <div class="box-body">
+
+                    <div class="form-group">
+                        <p:outputLabel for="warehouse" styleClass="form_label"
+                                       value="From Warehouse" />
+                        <p:selectOneMenu id="warehouse" value="#{warehousesController.selectedWarehouse}" converter="warehouseConverter">
+                            <p:ajax event="change" process="@this" update="itemsTable,warehouseName" listener="#{warehousesController.loadItems()}"/>
+                            <f:selectItems value="#{warehousesController.all}" var="warehouse" itemLabel="#{warehouse.name}" itemValue="#{warehouse}"/>
+                        </p:selectOneMenu>
+                    </div>
+                    <div class="form-group">
+                        <p:outputLabel for="toWarehouse" styleClass="form_label"
+                                       value="To Warehouse" />
+                        <p:selectOneMenu id="toWarehouse" value="#{warehousesController.toWarehouse}" converter="warehouseConverter">
+                            <f:selectItems value="#{warehousesController.all}" var="warehouse" itemLabel="#{warehouse.name}" itemValue="#{warehouse}"/>
+                        </p:selectOneMenu>
+                    </div>
+
+
+                </div>
+                <div class="box-footer">
+                    <p:separator/>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"><h:outputText value="Items in warehouse #{warehousesController.selectedWarehouse.name}" id="warehouseName"/></h3>
+            </div>
+            <div class="box-body">
+                <p:dataTable widgetVar="itemsTable" value="#{warehousesController.warehouseItems}"
+                             paginator="true" rows="5"  var="item"  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+                             rowsPerPageTemplate="5,25,50,100"
+                             id="itemsTable" selection="#{warehousesController.selectedItems}" rowKey="#{item.id}">
+                     <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+                    <p:column headerText="Item Code"  >
+                        <h:outputText value="#{item.code}" />
+                    </p:column>
+                    <p:column headerText="Created in" >
+
+                        <h:outputText value="#{item.creationeDate}" />
+                    </p:column>
+                    <p:column headerText="Product Category"  >
+                        <h:outputText value="#{item.product.name}" />
+                    </p:column>
+
+                </p:dataTable>
+            </div>
+             <div class="box-footer">
+                        <p:commandButton partialSubmit="true"
+                            process="itemsTable,toWarehouse, @this"
+                            update="itemsTable,messages" action="#{warehousesController.transferProducts()}"
+                            styleClass="btn btn-primary" value="Transfer"></p:commandButton>
+                    </div>
+            <!-- /.box -->
+        </div>
+
+
+    </div>
+   
     </ui:composition>
 

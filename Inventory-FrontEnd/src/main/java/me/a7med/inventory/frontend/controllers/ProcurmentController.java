@@ -8,6 +8,7 @@ import inventory.pl.services.SearchService;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -25,6 +26,11 @@ public class ProcurmentController implements Serializable {
 	List<Procurement> userProcurments;
 	List<NeedsRequest> userRequests;
 	boolean showRequestsPanel;
+        
+        @PostConstruct
+        public void init(){
+            
+        }
 	/**
 	 * @return the selectedProject
 	 */

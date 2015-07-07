@@ -34,3 +34,10 @@ a:link:hover, a:visited:hover  {
     box-shadow: none;
     background: #DFC2A5;
 }
+.ui-commandlink.btn.btn-block.btn-danger{
+    box-shadow: none;
+    /* background-color: rgb(240, 21, 63); */
+    background: #f4543c;
+    width: 80px;
+    margin-left: 20%;
+}

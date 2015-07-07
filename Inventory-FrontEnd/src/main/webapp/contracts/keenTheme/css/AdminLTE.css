@@ -1466,6 +1466,8 @@ Gradient Background colors
   border-top-right-radius: 0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
+  height: auto;
+  /* min-height: 66px; */
 }
 .box .box-body > table,
 .box .box-body > .table {
@@ -1541,6 +1543,7 @@ Gradient Background colors
   border-bottom-left-radius: 3px;
   padding: 10px;
   background-color: #ffffff;
+  margin-top: 3%;
 }
 .box.box-solid {
   border-top: 0px;

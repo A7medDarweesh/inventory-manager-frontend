@@ -22,107 +22,111 @@ import org.primefaces.model.TreeNode;
 @Named
 @ViewScoped
 public class RoleController {
-	String roleName;
-	private TreeNode permissions;
-	StringBuilder builder = new StringBuilder();
-	private TreeNode[] selectedNodes;
-	@Inject
-	SectionsController sectionsController;
-	@Inject
-	SaveService saveService;
-	@Inject
-	SearchService searchService;
-	List<Role>allRoles;
-	@PostConstruct
-	public void init() {
-		permissions = createCheckboxDocuments();
-		allRoles=getAllRoles();
-	}
 
-	private List<Role> getAllRoles() {
-		return searchService.getAllRoles();
-	}
+    private String roleName;
+    private TreeNode permissions;
+    StringBuilder builder = new StringBuilder();
+    private TreeNode[] selectedNodes;
+    @Inject
+    SectionsController sectionsController;
+    @Inject
+    SaveService saveService;
+    @Inject
+    SearchService searchService;
+    private List<Role> allRoles;
 
-	private TreeNode createCheckboxDocuments() {
-		TreeNode root = new CheckboxTreeNode(new Section(), null);
-		for (Section s : sectionsController.getSections()) {
-			TreeNode sectionNode = new CheckboxTreeNode(s, root);
+    @PostConstruct
+    public void init() {
+        System.out.println("creating role bean");
+        permissions = createCheckboxDocuments();
+        allRoles = loadRoles();
+    }
 
-			for (String action : s.getActions()) {
-				TreeNode actionNode = new CheckboxTreeNode(action, sectionNode);
-			}
-		}
+    private List<Role> loadRoles() {
+        return searchService.getAllRoles();
+    }
 
-		return root;
-	}
+    private TreeNode createCheckboxDocuments() {
+        TreeNode root = new CheckboxTreeNode(new Section(), null);
+        for (Section s : sectionsController.getSections()) {
+            TreeNode sectionNode = new CheckboxTreeNode(s.getName(), root);
 
-	/**
-	 * @return the roleName
-	 */
-	public String getRoleName() {
-		return roleName;
-	}
+            for (String action : s.getActions()) {
+                TreeNode actionNode = new CheckboxTreeNode(action, sectionNode);
+            }
+        }
 
-	/**
-	 * @param roleName
-	 *            the roleName to set
-	 */
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
+        return root;
+    }
 
-	/**
-	 * @return the permissions
-	 */
-	public TreeNode getPermissions() {
-		return permissions;
-	}
+    /**
+     * @return the roleName
+     */
+    public String getRoleName() {
+        return roleName;
+    }
 
-	/**
-	 * @param permissions
-	 *            the permissions to set
-	 */
-	public void setPermissions(TreeNode permissions) {
-		this.permissions = permissions;
-	}
+    /**
+     * @param roleName the roleName to set
+     */
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 
-	/**
-	 * @return the selectedNodes
-	 */
-	public TreeNode[] getSelectedNodes() {
-		return selectedNodes;
-	}
+    /**
+     * @return the permissions
+     */
+    public TreeNode getPermissions() {
+        return permissions;
+    }
 
-	/**
-	 * @param selectedNodes
-	 *            the selectedNodes to set
-	 */
-	public void setSelectedNodes(TreeNode[] selectedNodes) {
-		this.selectedNodes = selectedNodes;
-	}
+    /**
+     * @param permissions the permissions to set
+     */
+    public void setPermissions(TreeNode permissions) {
+        this.permissions = permissions;
+    }
 
-	public void saveRole() {
-		builder.setLength(0);
-		for (TreeNode node : selectedNodes) {
-			Object data = node.getData();
-			if (data instanceof String) {
-				String action = node.getData().toString();
-				Section section = (Section) node.getParent().getData();
-				builder.append(section.getName()).append("_").append(action).append(";");
-			}
-			builder.deleteCharAt(builder.length() - 1);
-			Role r = new Role();
-			r.setRoleName(roleName);
-			r.setPermissions(builder.toString());
-			saveService.saveRole(r);
-			System.out.println(node.getData().toString());
-		}
-	}
+    /**
+     * @return the selectedNodes
+     */
+    public TreeNode[] getSelectedNodes() {
+        return selectedNodes;
+    }
 
-	/**
-	 * @param allRoles the allRoles to set
-	 */
-	public void setAllRoles(List<Role> allRoles) {
-		this.allRoles = allRoles;
-	}
+    /**
+     * @param selectedNodes the selectedNodes to set
+     */
+    public void setSelectedNodes(TreeNode[] selectedNodes) {
+        this.selectedNodes = selectedNodes;
+    }
+
+    public void saveRole() {
+        builder.setLength(0);
+        System.out.println("node:"+roleName);
+        for (TreeNode node : selectedNodes) {
+            
+            if (node.getChildCount() < 1) {
+                String action = node.getData().toString();
+                String section = (String) node.getParent().getData();
+                builder.append(section).append("_").append(action).append(";");
+            }
+        }
+            builder.deleteCharAt(builder.length() - 1);
+            Role r = new Role();
+            r.setRoleName(roleName);
+            r.setPermissions(builder.toString());
+            saveService.saveRole(r);
+            allRoles = loadRoles();
+        
+    }
+
+    public List<Role> getAllRoles() {
+        return allRoles;
+    }
+
+    public void setAllRoles(List<Role> allRoles) {
+        this.allRoles = allRoles;
+    }
+
 }

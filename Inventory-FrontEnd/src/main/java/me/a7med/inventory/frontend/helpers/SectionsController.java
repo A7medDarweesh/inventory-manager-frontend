@@ -21,13 +21,13 @@ import javax.inject.Named;
 public class SectionsController {
 
     private List<Section> sections;
-    String[] sectionNames = {"Projects", "Suppliers", "Requests", "Procurements and Purchases", "Inventory-In Transactions", "Inventory-Out Transactions", "products"};
-    String[][] sectionActions = {{"view", "create", "reports"}, {"view", "create", "edit", "reports"}, {"view", "add", "edit", "change status", "reports"},
+    String[] sectionNames = {"Projects", "Suppliers","Warehouses", "Requests", "Procurements and Purchases", "Inventory-In Transactions", "Inventory-Out Transactions", "products"};
+    String[][] sectionActions = {{"view", "create", "reports"}, {"view", "create", "edit", "reports"},{"view", "create", "reports"}, {"view", "add", "edit", "change status", "reports"},
     {"view", "add", "edit", "change status", "reports"}, {"view", "make transaction", "reports"}, {"view", "make transaction", "reports"},
     {"view", "create", "edit", "reports"}
     };
-    String[][] sectionLinks = {{"index", "reports"}, {"index", "reports"}, {"index", "reports"}, {"index", "reports"}, {"index", "reports"}, {"index", "reports"}, {"index", "reports"}};
-    String[] linkNames = {"projects", "suppliers", "requests", "procurments", "inventory_in", "inventory_out", "products"};
+    String[][] sectionLinks = {{"index", "reports"}, {"index", "reports"}, {"index", "reports"}, {"index", "reports"}, {"index", "reports"}, {"index", "reports"}, {"index", "reports"}, {"index", "reports"}};
+    String[] linkNames = {"projects", "suppliers", "warehouse","requests", "procurments", "inventory_in", "inventory_out", "products"};
 
     public List<Section> getSections() {
         return sections;

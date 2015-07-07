@@ -76,6 +76,7 @@
     overflow: auto;
     float: left;
     margin-bottom: 3%;
+    min-height: 2000px;
 }
 #footer{
     position: fixed;
@@ -93,7 +94,7 @@
 .row_container{
     margin-bottom: -4%;
     margin-right: 4%;
-    clear: both;
+    /* clear: both; */
     float: left;
 }
 .row_container .ui-panel .ui-widget-header{
@@ -225,4 +226,9 @@
     /* clear: both; */
     width: 100%;
     margin-left: 0px;
+}
+.rolePermissions{
+      margin-top: 13%;
+  
+      border-color: cornflowerblue!important;
 }
