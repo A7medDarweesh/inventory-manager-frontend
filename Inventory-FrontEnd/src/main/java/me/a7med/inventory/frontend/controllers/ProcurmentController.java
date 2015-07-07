@@ -3,16 +3,19 @@ package me.a7med.inventory.frontend.controllers;
 import inventory.pl.entities.NeedsRequest;
 import inventory.pl.entities.Procurement;
 import inventory.pl.entities.Project;
+import inventory.pl.entities.User;
 import inventory.pl.services.SaveService;
 import inventory.pl.services.SearchService;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import me.a7med.inventory.frontend.helpers.qualifiers.LoggedIn;
 
 @Named
 @ViewScoped
@@ -20,6 +23,9 @@ public class ProcurmentController implements Serializable {
 	Project selectedProject;
 	@Inject
 	SaveService saveService;
+	@Inject
+	@LoggedIn
+	User currentUser;
 	@Inject
 	SearchService searchService;
 	Procurement selectedProcurement;
@@ -29,8 +35,14 @@ public class ProcurmentController implements Serializable {
         
         @PostConstruct
         public void init(){
+        	loadData();
+        	
             
         }
+	private void loadData() {
+		userProcurments=searchService.getuserProcurements(currentUser);
+			
+		}
 	/**
 	 * @return the selectedProject
 	 */
