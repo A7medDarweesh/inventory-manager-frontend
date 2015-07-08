@@ -4,10 +4,12 @@ import inventory.pl.entities.NeedsRequest;
 import inventory.pl.entities.Procurement;
 import inventory.pl.entities.Project;
 import inventory.pl.entities.User;
+import inventory.pl.helpers.RequestStatus;
 import inventory.pl.services.SaveService;
 import inventory.pl.services.SearchService;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -91,6 +93,14 @@ public class ProcurmentController implements Serializable {
 	public void setUserRequests(List<NeedsRequest> userRequests) {
 		this.userRequests = userRequests;
 	}
-	
-
+	public void editRequest(Procurement p){
+		selectedProcurement=p;
+	}
+public void addRequest(){
+	Procurement proc=new Procurement();
+	proc.setAddingDate(new Date());
+	proc.setProject(selectedProject);
+	proc.setRequestStatus(RequestStatus.UNDER_REVIEW);
+	saveService.saveProcurement(proc);
+}
 }

@@ -32,15 +32,19 @@
                                  paginator="true" rows="5"  var="item"  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
                                  rowsPerPageTemplate="5,25,50,100"
                                  id="itemsTable" >
-                        <p:column headerText="Item Code"  >
-                            <h:outputText value="#{item.}" />
+                        <p:column headerText="Order Project"  >
+                            <h:outputText value="#{item.project.name}" />
                         </p:column>
                         <p:column headerText="Created in" >
 
-                            <h:outputText value="#{item.creationeDate}" />
+                            <h:outputText value="#{item.addingDate}" />
+                        </p:column>
+                        <p:column headerText="OrderStatus" >
+
+                            <h:outputText value="#{item.requestStatus}" />
                         </p:column>
                         <p:column headerText="Update request" >
-                            <p:commandButton validateClient="true" update="@form:container_panel" value="Edit Order" actionListener="#{requstsController.editRequest(needsRequest)}" action="#{screenController.switchScreen('requests','addProduct')}" process="@this" > 
+                            <p:commandButton validateClient="true" update="@form:container_panel" value="Edit Order" actionListener="#{procurmentController.editRequest(item)}" action="#{screenController.switchScreen('procurments','addProduct')}" process="@this" > 
                             </p:commandButton>
                         </p:column>
 

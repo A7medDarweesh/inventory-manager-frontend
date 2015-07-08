@@ -8,16 +8,18 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
     <!--
     --> 
-    <p:growl id='mesages'/>
-    <p:panelGrid columns="4" id="projectContainer" >
+    <p:panelGrid columns="4" id="requestContainer" >
         
 
-        <p:outputLabel for="projectName" value="Product Name"/>
-        <p:inputText id="projectName" value="#{productCon.productName}" />
+        <p:outputLabel for="requestProject" value="Add Procurement Order to Project:"/>
+        <p:selectOneMenu value="#{procurmentController.selectedProject}" id="requestProject" converter="projectConverter" required="true">
+        <f:selectItems value="#{projectController.userProjectList}" var="project" itemLabel="#{project.name}" itemValue="#{project}"></f:selectItems>
+        </p:selectOneMenu>
         <f:facet name="footer">
-            <p:commandButton action="#{screenController.testAction('new project')}" value="test"/>
+            <p:commandButton action="#{procurmentController.addRequest()}" value="Add Request" process="requestContainer"/>
         </f:facet>
         </p:panelGrid>
+    
     
 
 </ui:composition>
