@@ -106,7 +106,7 @@ public class LoginFilter implements Filter {
         
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse=(HttpServletResponse)response;
-        boolean ignore=httpServletRequest.getRequestURI().endsWith(ignored)||httpServletRequest.getRequestURI().startsWith(httpServletRequest.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER)||httpServletRequest.getRequestURI().contains("/unfiltered/");
+        boolean ignore=httpServletRequest.getRequestURI().endsWith(ignored)||httpServletRequest.getRequestURI().startsWith(httpServletRequest.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER)||httpServletRequest.getRequestURI().contains("/images/");
         if (debug) {
             log("LoginFilter:doFilter()");
         }
