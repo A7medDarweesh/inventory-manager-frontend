@@ -62,8 +62,8 @@
             <c:forEach  items="#{transactionController.values}" var="fet" varStatus="status">
                 <h:panelGroup  rendered="#{fet.feature.type.toString() eq 'TEXT'}">
                     <div class="form-group">
-                        <p:outputLabel  styleClass="form_label"  value="#{fet.feature.name}"/>
-                        <p:inputText  value="#{fet.value}" required="true"/>
+                        <p:outputLabel for="#{fet.feature.id}" styleClass="form_label"  value="#{fet.feature.name}"/>
+                        <p:inputText id="#{fet.feature.id}" value="#{fet.value}" required="true"/>
                     </div>
 
                 </h:panelGroup> 
